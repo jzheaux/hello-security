@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -16,6 +17,11 @@ public class HelloSecurityApplication {
 		@GetMapping("/")
 		public String root(@AuthenticationPrincipal Principal user) {
 			return user.getName();
+		}
+
+		@PostMapping("/test")
+		public String rootPost() {
+			return "Hello from the other side!";
 		}
 	}
 
